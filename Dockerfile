@@ -14,10 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install uv
 RUN pip install --no-cache-dir uv
 
-RUN playwright install --with-deps chromium
 # Install project deps
 RUN uv pip install --system -e .
-
 # Install Chromium (after project deps so version matches)
 RUN playwright install --with-deps chromium
 
