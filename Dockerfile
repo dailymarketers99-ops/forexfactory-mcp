@@ -29,4 +29,4 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 ENV PYTHONPATH=/app/src
 
 # Run server
-ENTRYPOINT ["uv", "run", "ffcal-server"]
+ENTRYPOINT ["ffcal-server"]
