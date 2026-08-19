@@ -21,7 +21,7 @@ COPY . ./
 RUN uv pip install --system -e .
 
 # Install Chromium browser binary (must come after project deps so versions match)
-RUN playwright install --with-deps chromium
+RUN playwright install --with-deps chromium chromium-headless-shell
 
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
  
