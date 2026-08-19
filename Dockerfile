@@ -13,17 +13,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install uv
 RUN pip install --no-cache-dir uv
+
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+
 # Copy project
 COPY . ./
 
 # Install project deps (this installs the playwright package itself)
 RUN uv pip install --system -e .
 
-# Install Chromium browser binary (must come after project deps so versions match)
-RUN playwright install --with-deps chromium chromium-headless-shellRUN uv run playwright install --with-deps chromium chromium-headless-shell 
-ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
- 
+# Install Chromium browser binaries using the project's own pinned playwright version
+RUN uv run playwright install --with-deps chromium chromium-headless-shell
+
 # Ensure src is on path
 ENV PYTHONPATH=/app/src
 
