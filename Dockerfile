@@ -29,4 +29,4 @@ RUN uv run playwright install --with-deps chromium chromium-headless-shell
 ENV PYTHONPATH=/app/src
 
 # Run server
-ENTRYPOINT ["ffcal-server"]
+ENTRYPOINT ["uv", "run", "ffcal-server"]
